@@ -1,82 +1,231 @@
-# Image-Reconstruction Technique
-  Medical Image Reconstruction - Dermascopic images
+# Official YOLOv7-XAI
 
-## Overview
-  An official implementation of Single image reconstruction technique for Melanoma Skin lesion images for feature extraction using PyTorch.
+Implementation of paper - [YOLOv7-XAI: Trainable bag-of-freebies sets new state-of-the-art for real-time skin lesion detection and classification](https://arxiv.org/abs/2207.02696)
 
-## Requirments
-  Matlab R2019
-  
-  Python 3.10.10
-  
-  PyTorch 1.4
-  
-  Pillow 5.1.0
-  
-  scikit-image 0.19.3
-  
-  numpy 1.14.5
-  
-  This was tested on Python 3.7. To install the required packages, use the provided requirements.txt file like so:
-            
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/YOLOv7-XAI-trainable-bag-of-freebies-sets-new/real-time-object-detection-on-coco)](https://paperswithcode.com/sota/real-time-object-detection-on-coco?p=YOLOv7-XAI-trainable-bag-of-freebies-sets-new)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/YOLOv7-XAI)
+<a href="https://colab.research.google.com/gist/AlexeyAB/b769f5795e65fdab80086f6cb7940dae/YOLOv7-XAIdetection.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+[![arxiv.org](http://img.shields.io/badge/cs.CV-arXiv%3A2207.02696-B31B1B.svg)](https://arxiv.org/abs/2207.02696)
+
+<div align="center">
+    <a href="./">
+        <img src="./figure/performance.png" width="79%"/>
+    </a>
+</div>
+
+
+## Performance 
+HAM10000
+
+| Model | Test Size | AP<sup>test</sup> | AP<sub>50</sub><sup>test</sup> | AP<sub>75</sub><sup>test</sup> | batch 1 fps | batch 34 average time |
+| :-- | :-: | :-: | :-: | :-: | :-: | :-: |
+| [**YOLOv7-XAI**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI.pt) | 640 | **51.4%** | **69.7%** | **55.9%** | 161 *fps* | 2.8 *ms* |
+| [**YOLOv7-XAI-X**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAIx.pt) | 640 | **53.1%** | **71.2%** | **57.8%** | 114 *fps* | 4.3 *ms* |
+|  |  |  |  |  |  |  |
+| [**YOLOv7-XAI-W6**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-w6.pt) | 1280 | **54.9%** | **72.6%** | **60.1%** | 84 *fps* | 7.6 *ms* |
+| [**YOLOv7-XAI-E6**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6.pt) | 1280 | **56.0%** | **73.5%** | **61.2%** | 56 *fps* | 12.3 *ms* |
+| [**YOLOv7-XAI-D6**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-d6.pt) | 1280 | **56.6%** | **74.0%** | **61.8%** | 44 *fps* | 15.0 *ms* |
+| [**YOLOv7-XAI-E6E**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6e.pt) | 1280 | **56.8%** | **74.4%** | **62.1%** | 36 *fps* | 18.7 *ms* |
+
+## Installation
+
+Docker environment (recommended)
+<details><summary> <b>Expand</b> </summary>
+
+``` shell
+# create the docker container, you can change the share memory size if you have more.
+nvidia-docker run --name YOLOv7-XAI -it -v your_coco_path/:/coco/ -v your_code_path/:/YOLOv7-XAI --shm-size=64g nvcr.io/nvidia/pytorch:21.08-py3
+
+# apt install required packages
+apt update
+apt install -y zip htop screen libgl1-mesa-glx
+
+# pip install required packages
+pip install seaborn thop
+
+# go to code folder
+cd /YOLOv7-XAI
 ```
-pip install -r requirements.txt
+
+</details>
+
+## Testing
+
+[`YOLOv7-XAI.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI.pt) [`YOLOv7-XAIx.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAIx.pt) [`YOLOv7-XAI-w6.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-w6.pt) [`YOLOv7-XAI-e6.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6.pt) [`YOLOv7-XAI-d6.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-d6.pt) [`YOLOv7-XAI-e6e.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6e.pt)
+
+``` shell
+python test.py --data data/data.yaml --img 640 --batch 32 --conf 0.001 --iou 0.65 --device 0 --weights YOLOv7-XAI.pt --name YOLOv7-XAI640_val
 ```
-            
 
-## Datasets
-  ISIC Challenge Datasets 2020  https://challenge.isic-archive.com/data/#2020
-  
-  PH2 Dataset https://www.dropbox.com/s/k88qukc20ljnbuo/PH2Dataset.rar
-## Pre-trained model
-  MELLiResNet 
-  
-  MELLIGAN
-  
-  https://drive.google.com/file/d/1FV0T8C_0Z6oMUuvOq9ELs6EsXqxLuS5O/view?usp=share_link
-## Input Size changing
-The provided model was trained on ISIC 2019, PH2 dataset and mednode image inputs, but to run it on inputs of arbitrary size, you'll have to change the input shape as given
+
+To measure accuracy, download [HAM10000-annotations for Pycocotools]( https://doi.org/10.7910/DVN/DBW86T) (email:v.nirmalaresearch@gmail.com) for annotated images and label folder sharing
+
+## Training
+
+Data preparation
+
+``` shell
+bash scripts/get_coco.sh
 ```
-from tensorflow import keras
 
-# Load the model
-model = keras.models.load_model('models/generator.h5')
+* Download MS HAM10000 dataset images ([train](http://images.cocodataset.org/zips/train2017.zip), [val](http://images.cocodataset.org/zips/val2017.zip), [test](http://images.cocodataset.org/zips/test2017.zip)) and [labels](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/coco2017labels-segments.zip). If you have previously used a different version of YOLO, we strongly recommend that you delete `train2017.cache` and `val2017.cache` files, and redownload [labels](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/coco2017labels-segments.zip) 
 
-# Define arbitrary spatial dims, and 3 channels.
-inputs = keras.Input((None, None, 3))
+Single GPU training
 
-# Trace out the graph using the input:
-outputs = model(inputs)
+``` shell
+# train p5 models
+python train.py --workers 8 --device 0 --batch-size 32 --data data/data.yaml --img 640 640 --cfg cfg/training/YOLOv7-XAI.yaml --weights '' --name YOLOv7-XAI --hyp data/hyp.scratch.p5.yaml
 
-# Override the model:
-model = keras.models.Model(inputs, outputs)
-
-# Now you are free to predict on images of any size.
+# train p6 models
+python train_aux.py --workers 8 --device 0 --batch-size 16 --data data/data.yaml --img 1280 1280 --cfg cfg/training/YOLOv7-XAI-w6.yaml --weights '' --name YOLOv7-XAI-w6 --hyp data/hyp.scratch.p6.yaml
 ```
-## Experimental Results
-  The experimental results on the benchmark datasets.
-  ### Quantitave Results
-  | Algorithm|  | Bicubic | ESPCN | SRGAN | ESRGAN | MELLIGAN (MY model)|
-  | ---------|--| ------- |-------|-------|--------|--------|
-  |ISIC 2020| PSNR  | 23.16  | 27.52|25.85|28.54|40.12|
-  | Dataset | SSIM  | 0.7244 |0.795|0.7947 |0.8145 |0.9465|
-  |PH2| PSNR  |21.51|	24.6| 23.62|	24.53	|38.84|
-  |  Dataset  | SSIM  |0.606|	0.7052|	0.6975|	0.6711|	0.9314|
-  |Med node| PSNR  | 21.71|	22.3|	22.11|	22.79|	37.51|
-  |  Dataset| SSIM  |0.6317|	0.6595|	0.6774|	0.705| 0.9215|
- ### Qualitative Results
-![image](https://user-images.githubusercontent.com/107538530/218392416-8f738bfb-e019-404c-a9b8-6255387745ac.png)
+
+Multiple GPU training
+
+``` shell
+# train p5 models
+python -m torch.distributed.launch --nproc_per_node 4 --master_port 9527 train.py --workers 8 --device 0,1,2,3 --sync-bn --batch-size 128 --data data/data.yaml --img 640 640 --cfg cfg/training/YOLOv7-XAI.yaml --weights '' --name YOLOv7-XAI --hyp data/hyp.scratch.p5.yaml
+
+# train p6 models
+python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train_aux.py --workers 8 --device 0,1,2,3,4,5,6,7 --sync-bn --batch-size 128 --data data/data.yaml --img 1280 1280 --cfg cfg/training/YOLOv7-XAI-w6.yaml --weights '' --name YOLOv7-XAI-w6 --hyp data/hyp.scratch.p6.yaml
+```
+
+## Transfer learning
+
+[`YOLOv7-XAItraining.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAItraining.pt) [`YOLOv7-XAIx_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAIx_training.pt) [`YOLOv7-XAI-w6_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-w6_training.pt) [`YOLOv7-XAI-e6_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6_training.pt) [`YOLOv7-XAI-d6_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-d6_training.pt) [`YOLOv7-XAI-e6e_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6e_training.pt)
+
+Single GPU finetuning for custom dataset
+
+``` shell
+# finetune p5 models
+python train.py --workers 8 --device 0 --batch-size 32 --data data/custom.yaml --img 640 640 --cfg cfg/training/YOLOv7-XAI-custom.yaml --weights 'YOLOv7-XAItraining.pt' --name YOLOv7-XAI-custom --hyp data/hyp.scratch.custom.yaml
+
+# finetune p6 models
+python train_aux.py --workers 8 --device 0 --batch-size 16 --data data/custom.yaml --img 1280 1280 --cfg cfg/training/YOLOv7-XAI-w6-custom.yaml --weights 'YOLOv7-XAI-w6_training.pt' --name YOLOv7-XAI-w6-custom --hyp data/hyp.scratch.custom.yaml
+```
+
+## Re-parameterization
+
+See [reparameterization.ipynb](tools/reparameterization.ipynb)
+
+## Inference
 
 
-## Comments
-  The queries and comments on my codes can be forwarded to v.nirmalaresearch@gmail.com
-## Contributors
-<!-- Copy-paste in your Readme.md file -->
 
-<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = GitHub_username/repository_name"/>
-</a>
+On image:
+``` shell
+python detect.py --weights YOLOv7-XAI.pt --conf 0.25 --img-size 640 --source inference/images/horses.jpg
+```
 
-Made with [contributors-img](https://contrib.rocks)
+<div align="center">
+    <a href="./">
+        <img src="./figure/horses_prediction.jpg" width="59%"/>
+    </a>
+</div>
 
- 
+
+## Export
+
+**Pytorch to CoreML (and inference on MacOS/iOS)** <a href="https://colab.research.google.com/github/WongKinYiu/YOLOv7-XAI/blob/main/tools/YOLOv7-XAICoreML.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+
+**Pytorch to ONNX with NMS (and inference)** <a href="https://colab.research.google.com/github/WongKinYiu/YOLOv7-XAI/blob/main/tools/YOLOv7-XAIonnx.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+```shell
+python export.py --weights YOLOv7-XAI-tiny.pt --grid --end2end --simplify \
+        --topk-all 100 --iou-thres 0.65 --conf-thres 0.35 --img-size 640 640 --max-wh 640
+```
+
+**Pytorch to TensorRT with NMS (and inference)** <a href="https://colab.research.google.com/github/WongKinYiu/YOLOv7-XAI/blob/main/tools/YOLOv7-XAItrt.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+
+```shell
+wget https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-tiny.pt
+python export.py --weights ./YOLOv7-XAI-tiny.pt --grid --end2end --simplify --topk-all 100 --iou-thres 0.65 --conf-thres 0.35 --img-size 640 640
+git clone https://github.com/Linaom1214/tensorrt-python.git
+python ./tensorrt-python/export.py -o YOLOv7-XAI-tiny.onnx -e YOLOv7-XAI-tiny-nms.trt -p fp16
+```
+
+**Pytorch to TensorRT another way** <a href="https://colab.research.google.com/gist/AlexeyAB/fcb47ae544cf284eb24d8ad8e880d45c/YOLOv7-XAItrtlinaom.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <details><summary> <b>Expand</b> </summary>
+
+
+```shell
+wget https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-tiny.pt
+python export.py --weights YOLOv7-XAI-tiny.pt --grid --include-nms
+git clone https://github.com/Linaom1214/tensorrt-python.git
+python ./tensorrt-python/export.py -o YOLOv7-XAI-tiny.onnx -e YOLOv7-XAI-tiny-nms.trt -p fp16
+
+# Or use trtexec to convert ONNX to TensorRT engine
+/usr/src/tensorrt/bin/trtexec --onnx=YOLOv7-XAI-tiny.onnx --saveEngine=YOLOv7-XAI-tiny-nms.trt --fp16
+```
+
+</details>
+
+Tested with: Python 3.7.13, Pytorch 1.12.0+cu113
+
+
+## Instance segmentation (with NTU)
+
+[`code`](https://github.com/Nirmala-research/YOLOv7-XAI/tree/mask) [`YOLOv7-XAI-mask.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-mask.pt)
+
+See [instance.ipynb](https://github.com/Nirmala-research/YOLOv7-XAI/blob/main/tools/instance.ipynb).
+
+<div align="center">
+    <a href="./">
+        <img src="./figure/mask.png" width="59%"/>
+    </a>
+</div>
+
+
+## Teaser
+
+YOLOv7-XAI-semantic & YOLOv7-XAI-panoptic & YOLOv7-XAI-caption
+
+<div align="center">
+    <a href="./">
+        <img src="./figure/tennis.jpg" width="24%"/>
+    </a>
+    <a href="./">
+        <img src="./figure/tennis_semantic.jpg" width="24%"/>
+    </a>
+    <a href="./">
+        <img src="./figure/tennis_panoptic.png" width="24%"/>
+    </a>
+    <a href="./">
+        <img src="./figure/tennis_caption.png" width="24%"/>
+    </a>
+</div>
+
+YOLOv7-XAI-semantic & YOLOv7-XAI-detection & YOLOv7-XAI-depth (with NTUT)
+
+<div align="center">
+    <a href="./">
+        <img src="./figure/YOLOv7-XAIcity.jpg" width="80%"/>
+    </a>
+</div>
+
+YOLOv7-XAI-3d-detection & YOLOv7-XAI-lidar & YOLOv7-XAI-road (with NTUT)
+
+<div align="center">
+    <a href="./">
+        <img src="./figure/YOLOv7-XAI3d.jpg" width="30%"/>
+    </a>
+    <a href="./">
+        <img src="./figure/YOLOv7-XAIlidar.jpg" width="30%"/>
+    </a>
+    <a href="./">
+        <img src="./figure/YOLOv7-XAIroad.jpg" width="30%"/>
+    </a>
+</div>
+
+
+## Acknowledgements
+
+<details><summary> <b>Expand</b> </summary>
+
+* [https://github.com/AlexeyAB/darknet](https://github.com/AlexeyAB/darknet)
+* [https://github.com/Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)
+* [https://github.com/ultralytics/yolov3](https://github.com/ultralytics/yolov3)
+* [https://github.com/ultralytics/yolov5](https://github.com/ultralytics/yolov5)
+* [https://github.com/DingXiaoH/RepVGG](https://github.com/DingXiaoH/RepVGG)
+* [https://github.com/JUGGHM/OREPA_CVPR2022](https://github.com/JUGGHM/OREPA_CVPR2022)
+* [https://github.com/TexasInstruments/edgeai-yolov5/tree/yolo-pose](https://github.com/TexasInstruments/edgeai-yolov5/tree/yolo-pose)
+
+</details>
