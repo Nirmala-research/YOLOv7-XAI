@@ -15,17 +15,13 @@ Implementation of paper - [YOLOv7-XAI: Trainable bag-of-freebies sets new state-
 
 
 ## Performance 
-HAM10000
+HAM10000 Dataset
 
-| Model | Test Size | AP<sup>test</sup> | AP<sub>50</sub><sup>test</sup> | AP<sub>75</sub><sup>test</sup> | batch 1 fps | batch 34 average time |
-| :-- | :-: | :-: | :-: | :-: | :-: | :-: |
-| [**YOLOv7-XAI**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI.pt) | 640 | **51.4%** | **69.7%** | **55.9%** | 161 *fps* | 2.8 *ms* |
-| [**YOLOv7-XAI-X**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAIx.pt) | 640 | **53.1%** | **71.2%** | **57.8%** | 114 *fps* | 4.3 *ms* |
-|  |  |  |  |  |  |  |
-| [**YOLOv7-XAI-W6**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-w6.pt) | 1280 | **54.9%** | **72.6%** | **60.1%** | 84 *fps* | 7.6 *ms* |
-| [**YOLOv7-XAI-E6**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6.pt) | 1280 | **56.0%** | **73.5%** | **61.2%** | 56 *fps* | 12.3 *ms* |
-| [**YOLOv7-XAI-D6**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-d6.pt) | 1280 | **56.6%** | **74.0%** | **61.8%** | 44 *fps* | 15.0 *ms* |
-| [**YOLOv7-XAI-E6E**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6e.pt) | 1280 | **56.8%** | **74.4%** | **62.1%** | 36 *fps* | 18.7 *ms* |
+| Model|AK |BCC |BKL |DF| MEL |NV |SCC |VASC|
+| :-- | :-: | :-: | :-: | :-: | :-: |:-:| :-: | :-: |
+| [**YOLOv7-XAI**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI.pt) | **98.9** |**97.4**| **96.5** |**96.7** |**97.4** |**96.0**| **96.4**|**95.0**|
+| [**YOLOv7**](https://github.com/WongKinYiu/yolov7) | 95.8| 94.9| 96.0 |94.1| 94.2| 92.3| 95.2| 94.5|
+| [**YOLOv6**](https://github.com/meituan/YOLOv6) |94.8| 95.3| 94.4| 93.9 |93.4 |90.8| 94.4| 93.0|
 
 ## Installation
 
@@ -46,29 +42,22 @@ pip install seaborn thop
 # go to code folder
 cd /YOLOv7-XAI
 ```
-
 </details>
-
-## Testing
-
-[`YOLOv7-XAI.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI.pt) [`YOLOv7-XAIx.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAIx.pt) [`YOLOv7-XAI-w6.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-w6.pt) [`YOLOv7-XAI-e6.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6.pt) [`YOLOv7-XAI-d6.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-d6.pt) [`YOLOv7-XAI-e6e.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6e.pt)
 
 ``` shell
 python test.py --data data/data.yaml --img 640 --batch 32 --conf 0.001 --iou 0.65 --device 0 --weights YOLOv7-XAI.pt --name YOLOv7-XAI640_val
 ```
 
 
-To measure accuracy, download [HAM10000-annotations for Pycocotools]( https://doi.org/10.7910/DVN/DBW86T) (email:v.nirmalaresearch@gmail.com) for annotated images and label folder sharing
+To measure accuracy, download
 
 ## Training
 
 Data preparation
 
-``` shell
-bash scripts/get_coco.sh
-```
+labelimg annotation tool
 
-* Download MS HAM10000 dataset images ([train](http://images.cocodataset.org/zips/train2017.zip), [val](http://images.cocodataset.org/zips/val2017.zip), [test](http://images.cocodataset.org/zips/test2017.zip)) and [labels](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/coco2017labels-segments.zip). If you have previously used a different version of YOLO, we strongly recommend that you delete `train2017.cache` and `val2017.cache` files, and redownload [labels](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/coco2017labels-segments.zip) 
+* Download MS HAM10000 dataset images  [HAM10000-annotations for Pycocotools]( https://doi.org/10.7910/DVN/DBW86T) (email:v.nirmalaresearch@gmail.com) for annotated images and label folder sharing
 
 Single GPU training
 
@@ -92,10 +81,7 @@ python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train_a
 
 ## Transfer learning
 
-[`YOLOv7-XAItraining.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAItraining.pt) [`YOLOv7-XAIx_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAIx_training.pt) [`YOLOv7-XAI-w6_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-w6_training.pt) [`YOLOv7-XAI-e6_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6_training.pt) [`YOLOv7-XAI-d6_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-d6_training.pt) [`YOLOv7-XAI-e6e_training.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-e6e_training.pt)
-
-Single GPU finetuning for custom dataset
-
+[`YOLOv7-XAItraining.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAItraining.pt) 
 ``` shell
 # finetune p5 models
 python train.py --workers 8 --device 0 --batch-size 32 --data data/custom.yaml --img 640 640 --cfg cfg/training/YOLOv7-XAI-custom.yaml --weights 'YOLOv7-XAItraining.pt' --name YOLOv7-XAI-custom --hyp data/hyp.scratch.custom.yaml
@@ -170,48 +156,6 @@ See [instance.ipynb](https://github.com/Nirmala-research/YOLOv7-XAI/blob/main/to
 <div align="center">
     <a href="./">
         <img src="./figure/mask.png" width="59%"/>
-    </a>
-</div>
-
-
-## Teaser
-
-YOLOv7-XAI-semantic & YOLOv7-XAI-panoptic & YOLOv7-XAI-caption
-
-<div align="center">
-    <a href="./">
-        <img src="./figure/tennis.jpg" width="24%"/>
-    </a>
-    <a href="./">
-        <img src="./figure/tennis_semantic.jpg" width="24%"/>
-    </a>
-    <a href="./">
-        <img src="./figure/tennis_panoptic.png" width="24%"/>
-    </a>
-    <a href="./">
-        <img src="./figure/tennis_caption.png" width="24%"/>
-    </a>
-</div>
-
-YOLOv7-XAI-semantic & YOLOv7-XAI-detection & YOLOv7-XAI-depth (with NTUT)
-
-<div align="center">
-    <a href="./">
-        <img src="./figure/YOLOv7-XAIcity.jpg" width="80%"/>
-    </a>
-</div>
-
-YOLOv7-XAI-3d-detection & YOLOv7-XAI-lidar & YOLOv7-XAI-road (with NTUT)
-
-<div align="center">
-    <a href="./">
-        <img src="./figure/YOLOv7-XAI3d.jpg" width="30%"/>
-    </a>
-    <a href="./">
-        <img src="./figure/YOLOv7-XAIlidar.jpg" width="30%"/>
-    </a>
-    <a href="./">
-        <img src="./figure/YOLOv7-XAIroad.jpg" width="30%"/>
     </a>
 </div>
 
