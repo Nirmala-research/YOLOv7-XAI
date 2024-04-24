@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 8
+names: ['AK', 'BCC', 'BKL', 'DF', 'MEL', 'NV', 'SCC', 'VASC']
+
+roboflow:
+  workspace: b-kotrk
+  project: trail-gzhuf
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/b-kotrk/trail-gzhuf/dataset/1
