@@ -94,7 +94,7 @@ python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train_a
 
 On image:
 ``` shell
-python detect.py --weights YOLOv7-XAI.pt --conf 0.25 --img-size 640 --source inference/images/horses.jpg
+python detect.py --weights YOLOv7-XAI.pt --conf 0.25 --img-size 640 --source inference/images/ISIC12399.jpg
 ```
 
 <div align="center">
