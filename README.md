@@ -2,6 +2,10 @@
 
 Implementation of paper will be shared once the published work is available in online
 
+## Class details can be found in data.yaml file
+#Results -Training-batch
+
+![Example Image](train_batch541.jpg)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/YOLOv7-XAI-trainable-bag-of-freebies-sets-new/real-time-object-detection-on-coco)](https://paperswithcode.com/sota/real-time-object-detection-on-coco?p=YOLOv7-XAI-trainable-bag-of-freebies-sets-new)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/YOLOv7-XAI)
 <a href="https://colab.research.google.com/gist/AlexeyAB/b769f5795e65fdab80086f6cb7940dae/YOLOv7-XAIdetection.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
@@ -22,6 +26,9 @@ HAM10000 Dataset
 | [**YOLOv7-XAI**](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI.pt) | **98.9** |**97.4**| **96.5** |**96.7** |**97.4** |**96.0**| **96.4**|**95.0**|
 | [**YOLOv7**](https://github.com/WongKinYiu/yolov7) | 95.8| 94.9| 96.0 |94.1| 94.2| 92.3| 95.2| 94.5|
 | [**YOLOv6**](https://github.com/meituan/YOLOv6) |94.8| 95.3| 94.4| 93.9 |93.4 |90.8| 94.4| 93.0|
+
+
+![Example Image](map.png)
 
 ## Installation
 
