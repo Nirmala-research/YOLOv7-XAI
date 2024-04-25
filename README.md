@@ -79,20 +79,7 @@ python -m torch.distributed.launch --nproc_per_node 4 --master_port 9527 train.p
 python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train_aux.py --workers 8 --device 0,1,2,3,4,5,6,7 --sync-bn --batch-size 128 --data data/data.yaml --img 1280 1280 --cfg cfg/training/YOLOv7-XAI-w6.yaml --weights '' --name YOLOv7-XAI-w6 --hyp data/hyp.scratch.p6.yaml
 ```
 
-## Transfer learning
 
-[`YOLOv7-XAItraining.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAItraining.pt) 
-``` shell
-# finetune p5 models
-python train.py --workers 8 --device 0 --batch-size 32 --data data/custom.yaml --img 640 640 --cfg cfg/training/YOLOv7-XAI-custom.yaml --weights 'YOLOv7-XAItraining.pt' --name YOLOv7-XAI-custom --hyp data/hyp.scratch.custom.yaml
-
-# finetune p6 models
-python train_aux.py --workers 8 --device 0 --batch-size 16 --data data/custom.yaml --img 1280 1280 --cfg cfg/training/YOLOv7-XAI-w6-custom.yaml --weights 'YOLOv7-XAI-w6_training.pt' --name YOLOv7-XAI-w6-custom --hyp data/hyp.scratch.custom.yaml
-```
-
-## Re-parameterization
-
-See [reparameterization.ipynb](tools/reparameterization.ipynb)
 
 ## Inference
 
@@ -147,11 +134,6 @@ python ./tensorrt-python/export.py -o YOLOv7-XAI-tiny.onnx -e YOLOv7-XAI-tiny-nm
 Tested with: Python 3.7.13, Pytorch 1.12.0+cu113
 
 
-## Instance segmentation (with NTU)
-
-[`code`](https://github.com/Nirmala-research/YOLOv7-XAI/tree/mask) [`YOLOv7-XAI-mask.pt`](https://github.com/Nirmala-research/YOLOv7-XAI/releases/download/v0.1/YOLOv7-XAI-mask.pt)
-
-See [instance.ipynb](https://github.com/Nirmala-research/YOLOv7-XAI/blob/main/tools/instance.ipynb).
 
 <div align="center">
     <a href="./">
