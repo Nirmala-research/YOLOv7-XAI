@@ -1,6 +1,6 @@
 # Official YOLOv7-XAI
 
-Implementation of paper - [YOLOv7-XAI: Trainable bag-of-freebies sets new state-of-the-art for real-time skin lesion detection and classification](https://arxiv.org/abs/2207.02696)
+Implementation of paper will be shared once the published work is available in online
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/YOLOv7-XAI-trainable-bag-of-freebies-sets-new/real-time-object-detection-on-coco)](https://paperswithcode.com/sota/real-time-object-detection-on-coco?p=YOLOv7-XAI-trainable-bag-of-freebies-sets-new)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/YOLOv7-XAI)
