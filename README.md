@@ -6,7 +6,7 @@ Explainable AI (XAI) aims to make machine learning models transparent by providi
  
  <img src="C2-F1.png" width="79%"/>
 
-The implemented workflow architecture of our research published work is available in online **Download here** [Link](https://scholar.google.com/citations?user=50392UoAAAAJ&hl=en)
+The implemented workflow architecture of our research  work is published & available online **Download here** [Link](https://scholar.google.com/citations?user=50392UoAAAAJ&hl=en)
  
  
  <img src="C6-F2.png" width="90%"/>
