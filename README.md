@@ -1,8 +1,11 @@
 # Official YOLOv7-XAI
 
-Implementation of paper will be shared once the published work is available in online
+
+##Explainable AI (XAI) aims to make machine learning models transparent by providing clear, understandable explanations of their decisions. This enhances trust, accountability, and the ability to debug and improve AI systems.
  <img src="C2-F1.png" width="79%"/>
- <img src="C6-F4.png" width="79%"/>
+
+#Implemented workflow architecture of our research published work is available in online **click here** [Link] (https://scholar.google.com/citations?user=50392UoAAAAJ&hl=en)
+ <img src="C6-F2.png" width="79%"/>
  
 ## Class details can be found in data.yaml file
 #Results -Training-batch
