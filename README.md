@@ -1,7 +1,8 @@
 # Official YOLOv7-XAI
 
 Implementation of paper will be shared once the published work is available in online
- <img src="./figure/performance.png" width="79%"/>
+ <img src="./figure/C2-F1.png" width="79%"/>
+ <img src="./figure/C2-F4.png" width="79%"/>
  
 ## Class details can be found in data.yaml file
 #Results -Training-batch
